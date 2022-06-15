@@ -43,12 +43,20 @@ document.write("<hr>" + HarommalOszthatokSzama([10, 23, 12, 24, 31, 33, 42, 20])
 //4 feladat
 function Nyeroszamok(mennyiseg, alsoHatar, felsoHatar) {
     var tomb = [];
+    var eldont = true;
     var valtozo = 0;
     for (var i = 0; i < mennyiseg; i++) {
         valtozo = (Math.round(Math.random() * (felsoHatar - alsoHatar)) + alsoHatar);
-        if (tomb[i] != valtozo) {
+        for (var y = 0; y < tomb.length; y++) {
+            if (tomb[y] == valtozo) {
+                eldont = false;
+                mennyiseg++;
+            }
+        }
+        if (eldont == true) {
             tomb.push(valtozo);
         }
+        eldont = true;
     }
     return tomb;
 }

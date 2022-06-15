@@ -53,14 +53,25 @@ function HarommalOszthatokSzama(tomb:number[]):number{
 document.write("<hr>"+HarommalOszthatokSzama([10, 23,12, 24, 31, 33, 42, 20]));
 
 //4 feladat
-function Nyeroszamok(mennyiseg:number,alsoHatar:number,felsoHatar:number):any{
+function Nyeroszamok(mennyiseg:number,alsoHatar:number,felsoHatar:number):number[]{
     var tomb:number[]=[];
+    var eldont:boolean=true;
     var valtozo:number=0;
+ 
     for(let i=0;i<mennyiseg;i++){
         valtozo=(Math.round(Math.random() * (felsoHatar - alsoHatar)) + alsoHatar);
-    if(tomb[i]!=valtozo){
+           
+                for(let y=0;y<tomb.length;y++){
+                if(tomb[y]==valtozo){
+                    eldont=false;
+                    mennyiseg++;
+                     }
+            }
+    if(eldont==true){
        tomb.push(valtozo);
+
         }
+        eldont=true;
     }
     return tomb;
 }
